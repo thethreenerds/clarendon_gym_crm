@@ -10,12 +10,13 @@ function CreateUserForm(){
 
 
     const handleChange = (e) => {
-        setFormData({...formDatam, [e.target.name]: e.target.value});
+        setFormData({...formData, [e.target.name]: e.target.value});
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData);
+        //fetch calls go here
+        
     };
 
     return (
