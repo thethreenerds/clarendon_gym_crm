@@ -16,7 +16,22 @@ function CreateUserForm(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         //fetch calls go here
-        
+        try {
+            const res = await fetch('http://localhost:5000/users', {
+                method: 'POST',
+                headers: {'Content-Type': 'Application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            if(!res.ok) throw new Error('Failed to create user');
+
+            const data = await res.json();
+            console.log('User Created!', data);
+
+            
+        } catch (err){
+            console.error("Error:", err);
+        }
     };
 
     return (
