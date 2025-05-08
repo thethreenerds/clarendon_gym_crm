@@ -1,4 +1,5 @@
 const db = require('../db');
+const bcrypt = require('bcrypt');
 
 exports.getAllUsers = (req, res) => {
     db.query('SELECT * FROM users', (err, results) => {
@@ -7,7 +8,7 @@ exports.getAllUsers = (req, res) => {
     })
 }
 
-exports.createUser = (req, res) => {
+exports.createUser =  async (req, res) => {
     const { name, email, password, role } = req.body;
     db.query(
         'INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)',
